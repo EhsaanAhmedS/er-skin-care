@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="ml">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0f172a" />
+  <title>EA Unisex Skin Care</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- 1. URL / DOWNLOAD GATE -->
+  <section id="screen-url" class="screen active">
+    <div class="url-card">
+      <img src="logo.png" alt="ER Logo" class="brand-logo" onerror="this.style.display='none'" />
+      <h1 data-i18n="appTitle">ER Skin & Face Care</h1>
+      <p class="sub" data-i18n="appSub">EA Unisex • Skin & Face Care</p>
+      <button id="btn-download-gate" class="btn-primary" data-i18n="downloadBtn">⬇ Download</button>
+      <span class="free-tag">100% FREE</span>
+      <footer class="card-footer">Powered by ER • Sponsored by ER Apps</footer>
+    </div>
+  </section>
+
+  <!-- 2. HOME / APP GRID -->
+  <section id="screen-desktop-icon" class="screen">
+    <div class="phone-home-grid">
+      <div class="app-shortcut" id="btn-open-app-icon" title="Open EA Skin Care">
+        <div class="shortcut-icon">
+          <img src="logo.png" alt="EA" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline'" />
+          <span style="display:none">EA</span>
+        </div>
+        <span>EA Skin Care</span>
+      </div>
+      <div class="dummy-app-tile"><span>Gallery</span></div>
+      <div class="dummy-app-tile"><span>Camera</span></div>
+      <div class="dummy-app-tile"><span>Notes</span></div>
+    </div>
+  </section>
+
+  <!-- 3. LOADING SCREEN ("to the EA") -->
+  <section id="screen-loading" class="screen">
+    <div class="loading-box">
+      <img src="logo.png" alt="EA" class="load-logo" onerror="this.style.display='none'" />
+      <h2 data-i18n="loadingText">Loading EA Skin Care...</h2>
+      <div class="bar-wrap">
+        <div id="load-fill" class="bar-fill"></div>
+      </div>
+      <span id="load-pct">0%</span>
+      <footer class="card-footer">Powered by ER • Sponsored by ER Apps</footer>
+    </div>
+  </section>
+
+  <!-- 4. ONE-TIME SIGN IN + GMAIL OTP -->
+  <section id="screen-signin" class="screen">
+    <div class="signin-card">
+      <h2 data-i18n="signInTitle">Sign In</h2>
+      <p class="muted" data-i18n="signInSub">One-time sign in with Gmail OTP verification.</p>
+
+      <div id="step-details">
+        <input type="text" id="si-username" placeholder="Username / യൂസർ നെയിം" />
+        <input type="email" id="si-gmail" placeholder="Gmail Account (example@gmail.com)" />
+        <select id="si-gender">
+          <option value="">Select Gender / ലിംഗഭേദം തിരഞ്ഞെടുക്കുക</option>
+          <option value="F">Female / സ്ത്രീ</option>
+          <option value="M">Male / പുരുഷൻ</option>
+        </select>
+        <button id="btn-send-otp" class="btn-primary full" data-i18n="sendOtpBtn">Send OTP to Gmail</button>
+      </div>
+
+      <div id="step-otp" class="hidden">
+        <p id="otp-info-text" class="muted"></p>
+        <small id="otp-demo-code" class="otp-code-pill"></small>
+        <input type="text" id="si-otp-input" maxlength="6" placeholder="Enter 6-digit OTP" />
+        <button id="btn-verify-otp" class="btn-primary full" data-i18n="verifyOtpBtn">Verify & Complete Sign In</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. LOGGED OUT LOCKED STATE -->
+  <section id="screen-logged-out" class="screen">
+    <div class="signin-card">
+      <h2 data-i18n="sessionEnded">Session Ended</h2>
+      <p class="muted" data-i18n="loggedOutMsg">You have logged out. Login option is disabled after log out.</p>
+    </div>
+  </section>
+
+  <!-- 6. MAIN APP -->
+  <section id="screen-main" class="screen">
+    <div class="main-shell">
+
+      <aside class="left-rail">
+        <button id="btn-settings-gear" class="rail-btn" title="Settings & Owner">⚙️</button>
+        <button id="btn-lang-switch" class="rail-btn" title="English / മലയാളം" style="font-size:12px;font-weight:800;">EN/മല</button>
+        <button id="btn-logout" class="rail-mini-btn" title="Log Out" data-i18n="logoutBtn">Log Out</button>
+      </aside>
+
+      <div class="main-body">
+
+        <header class="top-dashboard">
+          <div class="profile-block">
+            <label for="profile-photo-input" class="avatar-wrap" title="Change Profile Photo">
+              <img id="profile-avatar" src="logo.png" alt="Profile" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&q=80'" />
+              <span class="edit-badge">+</span>
+            </label>
+            <input type="file" id="profile-photo-input" accept="image/*" hidden />
+
+            <div class="profile-meta">
+              <div class="name-row">
+                <strong id="profile-name"></strong>
+                <button id="btn-edit-name" class="link-btn" data-i18n="editBtn">Edit</button>
+              </div>
+              <small id="user-sub-info" class="muted"></small>
+              <button id="btn-progress-open" class="progress-pill">
+                <span data-i18n="dailyProgress">Daily Progress</span>
+                <div class="mini-meter"><div id="progress-bar-fill" style="width: 68%;"></div></div>
+                <strong id="progress-score">68%</strong>
+              </button>
+            </div>
+          </div>
+
+          <div class="ads-box" id="ads-slot">
+            <span class="ads-label">Ads</span>
+            <p id="ad-text">ER Herbal Glow Serum — Dermatologist Tested</p>
+          </div>
+        </header>
+
+        <div class="section-bar">
+          <div>
+            <h2 id="problems-heading">Face Problems</h2>
+            <small id="daily-checkin-note" class="muted"></small>
+          </div>
+          <button id="btn-open-ea-ai" class="ea-ai-tab">
+            <span>✦ EA AI</span>
+            <small>EN • മലയാളം</small>
+          </button>
+        </div>
+
+        <div id="problems-grid" class="problems-grid"></div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- DETAIL MODAL -->
+  <div id="modal-detail" class="modal hidden">
+    <div class="modal-card detail-card">
+      <button class="close-x" id="close-detail">✕</button>
+      <img id="detail-pic" src="" alt="" class="detail-pic" />
+      <h3 id="detail-name"></h3>
+      <div class="info-block"><h4 data-i18n="aboutLbl">About</h4><p id="detail-about"></p></div>
+      <div class="info-block"><h4 data-i18n="reasonsLbl">Reasons</h4><p id="detail-reasons"></p></div>
+      <div class="info-block"><h4 data-i18n="remedyLbl">പരിഹാരം / Care</h4><p id="detail-remedy"></p></div>
+      <div class="info-block"><h4 data-i18n="creamsLbl">Trusted Creams & Buy Links</h4><ul id="detail-creams" class="cream-list"></ul></div>
+    </div>
+  </div>
+
+  <!-- PROGRESS MODAL -->
+  <div id="modal-progress" class="modal hidden">
+    <div class="modal-card">
+      <button class="close-x" id="close-progress">✕</button>
+      <h3 data-i18n="progressModalTitle">Daily Skin Progress & Check</h3>
+      <div id="progress-summary" class="progress-summary"></div>
+      <div class="scan-actions">
+        <label class="btn-secondary">
+          <span data-i18n="uploadPhotoBtn">📷 Upload Skin Photo</span>
+          <input type="file" id="scan-upload-input" accept="image/*" hidden />
+        </label>
+        <button id="btn-cam-check" class="btn-primary" data-i18n="camCheckBtn">🤳 Camera Check</button>
+      </div>
+      <video id="scan-video" autoplay playsinline class="scan-video hidden"></video>
+      <button id="btn-snap-cam" class="btn-secondary hidden" data-i18n="captureBtn">Capture & Check</button>
+      <div id="scan-feedback" class="feedback-box"></div>
+    </div>
+  </div>
+
+  <!-- EA AI MODAL -->
+  <div id="modal-ea-ai" class="modal hidden">
+    <div class="modal-card ai-modal-card">
+      <button class="close-x" id="close-ea-ai">✕</button>
+      <div class="ai-layout">
+        <aside class="ai-sidebar">
+          <button id="btn-new-chat" class="btn-primary full" data-i18n="newChatBtn">+ New Chat</button>
+          <div id="chat-history-list" class="chat-history-list"></div>
+        </aside>
+        <div class="ai-chat-main">
+          <div class="ai-top-bar">
+            <strong id="active-chat-title">New Chat</strong>
+            <span class="ai-badge">EA AI</span>
+          </div>
+          <div id="ai-messages" class="ai-messages"></div>
+          <div class="ai-composer">
+            <input type="text" id="ai-prompt-input" placeholder="Ask about skin care (English / മലയാളം)..." />
+            <button id="btn-send-ai" class="btn-primary" data-i18n="sendBtn">Send</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SETTINGS & OWNER MODAL -->
+  <div id="modal-settings" class="modal hidden">
+    <div class="modal-card">
+      <button class="close-x" id="close-settings">✕</button>
+      <h3>Settings & Owner Panel</h3>
+      <button id="btn-unlock-owner" class="btn-secondary full">🔐 Unlock Owner Controls</button>
+
+      <div id="owner-panel-body" class="hidden">
+        <div class="setting-group">
+          <label>Ad Banner Text</label>
+          <input type="text" id="set-ad-input" />
+          <button id="btn-save-ad" class="btn-secondary">Save Ad</button>
+        </div>
+
+        <div class="setting-group">
+          <label>Box Size (px)</label>
+          <input type="range" id="box-size-range" min="140" max="280" value="185" />
+          <small id="box-size-val" class="muted">185px</small>
+        </div>
+
+        <hr class="divider" />
+        <h4>Add New Face Problem Box</h4>
+        <input type="text" id="new-prob-name" placeholder="Problem Name" />
+        <input type="text" id="new-prob-pic" placeholder="Image URL (optional)" />
+        <input type="text" id="new-prob-about" placeholder="About" />
+        <input type="text" id="new-prob-reasons" placeholder="Reasons" />
+        <input type="text" id="new-prob-remedy" placeholder="പരിഹാരം / Care" />
+        <button id="btn-add-problem" class="btn-primary full" style="margin-top:8px;">Add Box</button>
+
+        <hr class="divider" />
+        <h4>Users List</h4>
+        <div id="owner-users-list" class="users-list"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
